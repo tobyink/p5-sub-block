@@ -1,0 +1,17 @@
+# This file provides instructions for packaging.
+
+@prefix : <http://ontologi.es/doap-deps#>.
+
+`Sub-Block`
+	perl_version_from m`Sub::Block`;
+	version_from      m`Sub::Block`;
+	readme_from       m`Sub::Block`;
+	:runtime-requirement [ :on "Moo 1.000000"^^:CpanId ];
+	:runtime-requirement [ :on "Exporter::TypeTiny 0.012"^^:CpanId ];
+	:runtime-requirement [ :on "Sub::Quote"^^:CpanId ];
+	:runtime-requirement [ :on "namespace::clean"^^:CpanId ];
+	:runtime-requirement [ :on "PadWalker"^^:CpanId ];
+	:test-requirement    [ :on "Test::More 0.96"^^:CpanId ];
+	:test-requirement    [ :on "Test::Warnings"^^:CpanId ];
+	.
+
