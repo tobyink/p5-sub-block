@@ -160,6 +160,11 @@ Sub::Block - manipulate blocks of code to assemble them into subs
    my $plus_one = block { $_[0] + 1 };
    print $plus_one->(7);   # 8
 
+=head1 STATUS
+
+This is all pretty experimental at the moment. Consider it to be a
+proof-of-concept.
+
 =head1 DESCRIPTION
 
 Sub::Block allows you to create objects that are conceptually code blocks
