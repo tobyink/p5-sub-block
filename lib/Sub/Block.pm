@@ -307,7 +307,7 @@ You can also use the overloaded C<<< >> >>> operator:
 
 Or it can be called as a class method:
 
-   my $seq4 = Sub::Block->pipe($block1, $block2, $block3);
+   my $seq4 = Sub::Block->sequence($block1, $block2, $block3);
 
 =back
 
