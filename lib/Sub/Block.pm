@@ -1,21 +1,29 @@
+use 5.008;
+use strict;
+use warnings;
+
 package Sub::Block;
 
 our $AUTHORITY = 'cpan:TOBYINK';
 our $VERSION   = '0.001';
 
-use 5.008;
 use Moo;
 
 use Carp qw(carp croak);
-use Exporter::TypeTiny qw();
+use Exporter::Tiny qw();
 use Scalar::Util qw(blessed refaddr);
 use Sub::Quote qw();
 
 use namespace::clean;
 
-our @ISA    = 'Exporter::TypeTiny';
-our @EXPORT = 'block';
-sub block (&) { __PACKAGE__->new(@_) };
+{
+	our @ISA    = 'Exporter::Tiny';
+	our @EXPORT = 'block';
+	sub _generate_block {
+		my $class = shift;
+		sub (&) { $class->new(@_) };
+	}
+}
 
 use overload (
 	q[&{}]  => sub { $_[0]{sub} },
@@ -66,7 +74,7 @@ sub _check_coderef
 		my $name = $_[0]->name;
 		return if $name ne 'return' && $name ne 'wantarray';
 		local $Carp::CarpLevel = $Carp::CarpLevel + 2;
-		carp("Coderef $coderef appears to contain an explicit `${\ $_[0]->name }` statement; not suitable for inlining");
+		carp("Coderef $coderef appears to contain an explicit `$name` statement; not suitable for inlining");
 	};
 	
 	B::svref_2object($coderef)->ROOT->B::walkoptree('__Sub_Block_callback');
