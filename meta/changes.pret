@@ -4,3 +4,11 @@
 	issued  2013-08-04;
 	label   "Initial release".
 
+`Sub-Block 0.002 cpan:TOBYINK`
+	issued  2013-09-30;
+	changeset [
+		item "Switch from Exporter::TypeTiny to Exporter::Tiny."^^Update;
+		item "Use Dist::Inkt."^^Packaging;
+		item "General tidying up."^^Change;
+		item "Fix method name typo."^^Documentation;
+	].
